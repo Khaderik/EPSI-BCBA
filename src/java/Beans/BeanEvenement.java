@@ -5,8 +5,6 @@
  */
 package Beans;
 
-import com.sun.faces.config.WebConfiguration;
-import com.sun.org.omg.CORBA.ParDescriptionSeqHelper;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

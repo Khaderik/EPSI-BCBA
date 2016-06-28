@@ -66,4 +66,10 @@ public class Participant {
         this.mesDepenses = mesDepenses;
     }
 //</editor-fold>
+    
+    public void creerDepense()
+    {
+        
+        
+    }
 }
