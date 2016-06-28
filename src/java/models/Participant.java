@@ -72,4 +72,17 @@ public class Participant {
         
         
     }
+    
+    public double getTotalMesDepenses()
+    {
+        double total = 0;
+        
+        for (Depense uneDepense : mesDepenses) {
+            
+            total += uneDepense.getMontant();
+        }
+        
+        
+        return total;
+    }
 }

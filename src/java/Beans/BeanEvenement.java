@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import models.Depense;
 import models.Participant;
 
 /**
@@ -94,5 +95,19 @@ public class BeanEvenement {
         newParticipant.setNom(String.format("%s %d",newParticipant.getNom(),++compteurParticipant));
         
         return newParticipant;    
+    }
+    
+    public double getTotalDepenses()
+    {
+        double total = 0;
+        
+        for (Participant unParticipant : _lesParticipants) {
+            
+            for (Depense uneDepense : unParticipant.getMesDepenses()) {
+                
+                total += uneDepense.getMontant();
+            }
+        }
+        return total;
     }
 }

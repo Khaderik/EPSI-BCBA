@@ -7,19 +7,66 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet name="grid/grid.css" library="primefaces" />
     </h:head>
     <h:body>
-        #{beanEvenement.intitule} <br></br>
-        #{beanEvenement.dateDebut}<br></br>
-        #{beanEvenement.dateFin}<br></br>
+        <p:layout style="min-width:400px;min-height:400px;">
+            <p:layoutUnit position="center" size="200" minSize="100">
+                <p:commandButton id="imageBtn" value="#{beanEvenement.intitule}" type="button" />
+                <div>
+                    <p>
+                        <i>Date(s)</i> #{beanEvenement.dateDebut} <br/>     
+                        <i>Total Dépenses</i> #{beanEvenement.totalDepenses} €
+                    </p>
+                </div>
+                <p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade">
+                    <p:panel id="Depenses" style="margin-bottom:20px; float: left">
+<!--                        <p:dataList value="#{beanEvenement.lesParticipants}" var="p"
+                                    <
+                                    <p:commandButton id="unParticipant" value="Modifier dépense" type="button" />-->
 
-        <h:dataTable var="p" value="#{beanEvenement.lesParticipants}">
-            <h:column> <h:outputLabel value="#{p.nom}"/>
-            </h:column>
-        </h:dataTable>
-        <p:layoutUnit position="center">
-            Welcome to PrimeFaces
-        </p:layoutUnit>
+                    </p:panel>
+
+                </p:overlayPanel>
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="200" minSize="100" maxSize="400">
+                <div>
+                    <ui:repeat var="p" value="#{beanEvenement.lesParticipants}">
+                        <h:column>
+                            <p:panel id="basic" header="#{p.nom}" footer="#{p.totalMesDepenses} " style="margin-bottom:20px; float: left">
+                                <div>
+                                    <p:commandButton id="btnModif" type="button" icon="ui-icon-pencil" title="Modifier"/>
+                                    <p:overlayPanel id="overlayModif" for="btnModif" hideEffect="fade">
+                                        <p:panel id="pnlModif" style="margin-bottom:20px; float: left">
+
+
+                                        </p:panel>
+                                    </p:overlayPanel>
+                                    <p:commandButton id="btnAjouterDepense" type="button" icon="ui-icon-plusthick" title="Ajouter une dépense" />
+                                    <p:overlayPanel id="overlayAjoutDepense" for="btnAjouterDepense" hideEffect="fade">
+                                        <p:panel id="pnlAjoutDepense" style="margin-bottom:20px; float: left">
+
+
+                                        </p:panel>
+                                    </p:overlayPanel>
+                                    <p:commandButton id="btnBilan" title="Voir Bilan" type="button" icon="ui-icon-folder-open" />
+                                    <p:overlayPanel id="overlayBilan" for="btnBilan" hideEffect="fade">
+                                        <p:panel id="pnlBilan" style="margin-bottom:20px; float: left">
+
+
+                                        </p:panel>
+                                    </p:overlayPanel>
+                                </div>
+                            </p:panel>
+
+                        </h:column>
+                    </ui:repeat>
+
+                </div>
+            </p:layoutUnit>
+        </p:layout>
 
         <br />
         <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
